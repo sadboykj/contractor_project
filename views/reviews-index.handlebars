@@ -1,0 +1,40 @@
+<!-- reviews-index -->
+
+<h1>Reviews</h1>
+
+<script>
+fuction charity_domain()
+{
+    var mylist = document.getElementById("myList");
+    document.getElementById("domain").value=mylist.selectedIndex().text;
+}
+</script>
+
+<p>
+    Your domain is:
+    <!-- <input type="text" id="domain" size="20"> -->
+    <select id="myList" onchange="charity_domain()">
+        <option>Education</option>
+        <option>Civil Rights</option>
+        <option>Enviorment</option>
+    </select>
+</p>
+
+<a href="/reviews/new">
+    Tell us about your experience!
+</a>
+
+{{#each reviews}}
+    <h2>
+        <!-- a href="/reviews/{{"this._id"}}"></a -->
+        {{"this.charityTitle"}}
+    </h2>
+    <h4>
+        {{this.score}}
+    </h4>
+    <small>
+        {{this.location}}
+    </small>
+{{/each}}
+
+<br>
