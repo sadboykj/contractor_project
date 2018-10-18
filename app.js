@@ -9,39 +9,43 @@ app.engine('handlebars', exphbs({defaultLayout: 'main'}))
 app.set('view engine', 'handlebars')
 app.use(bodyParser.urlencoded({ extended: true }))
 
-let reviews = [
+let charities = [
     {
-        charityTitle: "Children's Scholarship Fund",
-        charityDomain: "Education",
-        charityScore: 100,
-        charityLocation: "Phildelphia, PA"
+        title: "Children's Scholarship Fund",
+        domain: "Education",
+        score: 100,
+        location: "Phildelphia, PA",
+        donationAmount: Number
     },
     {
-        charityTitle: "Congressional Medal of Honor Foundation",
-        charityDomain: "Civil Rights",
-        charityScore: 100,
-        charityLocation: "Los Angeles, CA"
+        title: "Congressional Medal of Honor Foundation",
+        domain: "Civil Rights",
+        score: 100,
+        location: "Los Angeles, CA",
+        donationAmount: Number
     },
     {
-        charityTitle: "Amazon Conservation Association",
-        charityDomain: "Enviorment",
-        charityScore: 100,
-        charityLocation: "Washington DC"
+        title: "Amazon Conservation Association",
+        domain: "Enviorment",
+        score: 100,
+        location: "Washington DC",
+        donationAmount: Number
     }
 ]
 
-const Review = mongoose.model('Review', {
-    charityTitle: String,
-    charityDomain: String,
-    charityScore: Number,
-    charityLocation: String
+const Charity = mongoose.model('Charity', {
+    title: String,
+    domain: String,
+    score: Number,
+    location: String,
+    donationAmount: Number
 })
 
 // index
 app.get('/', (req, res) => {
     // res.render('home', { msg: 'Wow I\'m so behind on this project!' });
-    Review.find().then(reviews => {
-        res.render('reviews-index', { reviews: reviews });
+    Charity.find().then(charities => {
+        res.render('reviews-index', { charities: charities });
     })
     .catch(err => {
         console.log("whoa whoa whoa there bud");
@@ -57,9 +61,9 @@ app.get('/reviews/new', (req, res) => {
 app.post('/reviews', (req, res) => {
     // console.log(req.body);
     // res.render('reviews-new  ', {});
-    Review.create(req.body).then((reviews) => {
-        console.log(reviews);
-        res.redirect('/');
+    Charity.create(req.body).then((charity) => {
+        console.log(charity);
+        res.redirect(`/reviews/${review._id}`);
     }).catch((err) => {
         console.log(err.message);
     })
@@ -67,7 +71,11 @@ app.post('/reviews', (req, res) => {
 
 // show
 app.get('/reviews/:id', (req, res) => {
-    res.send('all good over here')
+    Charity.findById(req.params.id).then((charity) => {
+        res.render('reviews-show', { charity: charity })
+    }).catch((err) => {
+        console.log(err.message);
+    })
 })
 
 app.listen(3000, () => {

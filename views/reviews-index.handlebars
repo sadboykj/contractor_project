@@ -5,15 +5,25 @@
 <script>
 fuction charity_domain()
 {
-    var mylist = document.getElementById("myList");
-    document.getElementById("domain").value=mylist.selectedIndex().text;
+    var domain = document.getElementById("domain").value;
+    var charity = String;
+    //
+    if (domain == "Education") {
+        charity = "Children's Scholarship Fund";
+    }
+    else if (domain == "Civil Rights") {
+        charity = 
+    }
+    // elif domain ==
+    // elif domain ==
+    document.getElementById("domain").value=
 }
 </script>
 
 <p>
     Your domain is:
     <!-- <input type="text" id="domain" size="20"> -->
-    <select id="myList" onchange="charity_domain()">
+    <select id="domain" onchange="charity_domain()">
         <option>Education</option>
         <option>Civil Rights</option>
         <option>Enviorment</option>
@@ -21,19 +31,23 @@ fuction charity_domain()
 </p>
 
 <a href="/reviews/new">
-    Tell us about your experience!
+    Donate today!
 </a>
 
-{{#each reviews}}
+{{#each charities}}
     <h2>
-        <!-- a href="/reviews/{{"this._id"}}"></a -->
-        {{"this.charityTitle"}}
+        <a href="/reviews/{{"this._id"}}">
+            {{"this.title"}}
+        </a>
     </h2>
     <h4>
-        {{this.score}}
+        {{this.domain}}
     </h4>
     <small>
         {{this.location}}
+    </small>
+    <small>
+        {{this.score}}
     </small>
 {{/each}}
 

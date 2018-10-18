@@ -2,16 +2,11 @@
 
 <form method="POST" action="/reviews">
     <fieldset>
-        <legend>
-            <!-- New Review -->
-
-        </legend>
-
+        <legend>Thank you for donating!</legend>
         <!-- Input -->
+        <!--
         <p>
-            <label for="charityTitle">
-                Charity
-            </label>
+            <label for="charityTitle">Charity</label>
             <br>
             <input type="text" name="charityTitle">
         </p>
@@ -23,18 +18,30 @@
             <input type="text" name="charityDomain">
         </p>
         <p>
-            <label for="charityScore">
-                Score
+        -->
+        <p>
+            Charity:
+            <!-- <input type="text" id="domain" size="20">
+            <select id="domain" onchange="charity_list()">
+                <option>Children's Scholarship Fund</option>
+                <option>Congressional Medal of Honor Foundation</option>
+                <option>Amazon Conservation Association</option>
+            </select>
+            -->
+            {{domain}}
+        </p>
+            <label for="donationAmount">
+                Donation Amount:
             </label>
             <br>
-            <input type="text" name="charityScore">
+            <input type="text" name="donationAmount">
         </p>
         <p>
-            <label for="charityLocation">
-                Location
+            <label for="comments">
+                Comments:
             </label>
             <br>
-            <input type="text" name="charityLocation">
+            <input type="text" name="commentSection">
         </p>
 
     </fieldset>
@@ -42,7 +49,7 @@
     <!-- button -->
     <p>
         <button type="submit">
-            Save Reviews
+            Submit
         </button>
     </p>
 
