@@ -1,0 +1,29 @@
+<!-- charities-list -->
+
+<h1>List of Charities</h1>
+
+<a href="/">
+    Home
+</a>
+<br>
+<a href="/charities/donate">
+    Donate today!
+</a>
+
+{{#each charities}}
+    <h4>
+        {{this.domain}}
+    </h4>
+    <h3>
+        <a href="/charities/{{this._id}}">
+            {{this.title}}
+        </a>
+    </h3>
+    <small>
+        {{this.location}}
+    </small>
+    <br>
+    <small>
+        Score: {{this.score}}
+    </small>
+{{/each}}

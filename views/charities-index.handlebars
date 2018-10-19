@@ -1,0 +1,51 @@
+<!-- charities-index -->
+
+<script>
+function save_domain() {
+    var domain = document.getElementById("domain").value;
+    var charityName = String;
+    //
+    if (domain == "Education") {
+        charityName = "Children's Scholarship Fund";
+    }
+    else if (domain == "Civil Rights") {
+        charityName = "Congressional Medal of Honor Foundation";
+    }
+    else if (domain == "Enviorment") {
+        charityName = "Amazon Conservation Association";
+    }
+    //
+    localStorage.setItem("charityName", charityName)
+    console.log(charityName);
+}
+</script>
+
+<h1>Charities</h1>
+
+<p>
+    Domain:
+    <!-- <input type="text" id="domain" size="20"> -->
+    <select id="domain" onchange="save_domain()">
+        <option value="Education">Education</option>
+        <option value="Civil Rights">Civil Rights</option>
+        <option value="Enviorment">Enviorment</option>
+    </select>
+</p>
+
+<a href="/charities/donate">
+    Donate today!
+</a>
+
+<a href="/charities/list">
+    Charities
+</a>
+
+<!-- {{#each donations}}
+    <h2>
+        <a href="/donations/{{this._id}}">
+            {{this.title}}
+        </a>
+    </h2>
+{{/each}} -->
+
+<br>

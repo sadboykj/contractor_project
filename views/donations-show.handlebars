@@ -1,0 +1,27 @@
+<!-- views/donations-show.handlebars -->
+<a href="/"> Home </a>
+
+<!-- <script>
+function charity_domain() {
+    var domain = document.getElementById("domain").value;
+    var charityName = String;
+    //
+    if (domain == "Education") {
+        charityName = "Children's Scholarship Fund";
+    }
+    else if (domain == "Civil Rights") {
+        charityName = "Congressional Medal of Honor Foundation";
+    }
+    else if (domain == "Enviorment") {
+        charityName = "Amazon Conservation Association";
+    }
+    //
+    localStorage.setItem("charityName", charityName)
+    console.log(charityName);
+}
+</script> -->
+
+<h2>{{donation.charity}}</h2>
+<h2>{{donation.amount}}</h2>
+<h4>{{donation.donor}}</h4>
+<p>{{donation.comment}}</p>

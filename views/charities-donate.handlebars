@@ -1,0 +1,87 @@
+<!-- charities-donate.handlebars -->
+<script>
+function save_donor() {
+    var donor = document.getElementById("donor").value;
+    // donor
+    localStorage.setItem("donor", donor)
+    console.log(donor);
+}
+function save_amount() {
+    var amount = document.getElementById("amount").value;
+    // amount
+    localStorage.setItem("amount", amount)
+    console.log(amount);
+}
+function save_comments() {
+    var comments = document.getElementById("comments").value;
+    // comments
+    localStorage.setItem("comments", comments)
+    console.log(comments)
+}
+
+</script>
+
+<form method="POST" action="/charities">
+    <fieldset>
+        <legend>Thank you for donating!</legend>
+        <!-- Input -->
+        <!--
+        <p>
+            <label for="charityTitle">Charity</label>
+            <br>
+            <input type="text" name="charityTitle">
+        </p>
+        <p>
+            <label for="charityDomain">
+                Domain
+            </label>
+            <br>
+            <input type="text" name="charityDomain">
+        </p>
+        <p>
+        -->
+        <p>
+            <!-- <input type="text" id="domain" size="20">
+            <select id="domain" onchange="charity_list()">
+                <option>Children's Scholarship Fund</option>
+                <option>Congressional Medal of Honor Foundation</option>
+                <option>Amazon Conservation Association</option>
+            </select>
+            -->
+            <script>
+                charityName = localStorage.getItem("charityName")
+                document.write("Charity: " + charityName)
+            </script>
+        </p>
+        <p>
+            <label for="donor">
+                Name:
+            </label>
+            <br>
+            <input type="text" id="donor" name="donor" onchange="save_donor()">
+        </p>
+        <p>
+            <label for="amount">
+                Donation Amount:
+            </label>
+            <br>
+            <input type="number" min="1" id="amount" name="amount" onchange="save_amount()">
+        </p>
+        <p>
+            <label for="comments">
+                Comments:
+            </label>
+            <br>
+            <input type="text" id="comments" name="comments" onchange="save_comments()">
+        </p>
+
+    </fieldset>
+
+    <!-- button -->
+    <p>
+        <button type="submit">
+            Submit
+        </button>
+    </p>
+
+</form>
